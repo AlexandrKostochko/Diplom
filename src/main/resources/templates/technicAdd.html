@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddTechnic</title>
+</head>
+<body>
+<form th:action="@{/technic/add}" enctype="multipart/form-data" th:object="${technic}" method="post">
+    <div class="form-group">
+        <label> Model :</label> <input type="text" class="form-control" placeholder="Enter model" name="model"
+                                       th:field="${technic.model}"/>
+        <p th:if="${#fields.hasErrors('model')}" th:errors="${technic.model}" style="color: red"></p>
+    </div>
+    <br>
+    <div class="form-group">
+        <label> Serial Number :</label> <input type="text" class="form-control" placeholder="Enter serialNumber"
+                                               name="serialNumber" th:field="${technic.serialNumber}"/>
+        <p th:if="${#fields.hasErrors('serialNumber')}" th:errors="${technic.serialNumber}" style="color: red"></p>
+    </div>
+    <br>
+    <div class="form-group">
+        <label> Category :</label> <input type="text" class="form-control" placeholder="Enter categoryName"
+                                          name="categoryName" th:field="${technic.categoryName}"/>
+        <p th:if="${#fields.hasErrors('categoryName')}" th:errors="${technic.categoryName}" style="color: red"></p>
+    </div>
+    <br>
+    <div class="form-group">
+        <label> Description :</label> <input size="2000" type="text" class="form-control"
+                                             placeholder="Enter description" name="description"
+                                             th:field="${technic.description}"/>
+        <p th:if="${#fields.hasErrors('description')}" th:errors="${technic.description}" style="color: red"></p>
+    </div>
+    <br>
+    <div class="form-group">
+        <label> Price :</label> <input type="text" class="form-control" placeholder="Enter price" name="price"
+                                       th:field="${technic.price}"/>
+        <p th:if="${#fields.hasErrors('price')}" th:errors="${technic.price}" style="color: red"></p>
+    </div>
+    <br>
+    <div class="form-group">
+        <label> Manufacturer :</label> <input type="text" class="form-control" placeholder="Enter manufacturer"
+                                              name="manufacturer" th:field="${technic.manufacturer}"/>
+        <p th:if="${#fields.hasErrors('manufacturer')}" th:errors="${technic.manufacturer}" style="color: red"></p>
+    </div>
+    <br>
+    <div class="form-group">
+        <label> Country manufacture :</label> <input type="text" class="form-control"
+                                                     placeholder="Enter countryManufacture" name="countryManufacture"
+                                                     th:field="${technic.countryManufacture}"/>
+        <p th:if="${#fields.hasErrors('countryManufacture')}" th:errors="${technic.countryManufacture}"
+           style="color: red"></p>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="file" multiple th:field="${technic.image}">
+    </div>
+    <br>
+    <div><input type="submit" value="add technic"/></div>
+</form>
+<br>
+<a th:if="${marker} == 1">
+    <p style="color: green">Technic is add</p>
+</a>
+<a th:if="${marker} == 2">
+    <p style="color: red"><a th:text="${message}"></a></p>
+</a>
+<p>Click <a th:href="@{/category/add}">here</a> to add category</p>
+<p>Click <a th:href="@{/}">here</a> to home</p>
+</body>
+</html>

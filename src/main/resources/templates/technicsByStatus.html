@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TechnicsByStatus</title>
+</head>
+<body>
+<div>
+  <div th:each="technic : ${technics}">
+    <p th:text="'Model: '+${technic.model}"></p>
+    <p th:text="'Manufacturer: '+${technic.manufacturer}"></p>
+    <p th:text="'Price: '+${technic.price}"></p>
+    <p th:text="'Serial Number: '+${technic.serialNumber}"></p>
+    <p th:text="'Category: '+${technic.category.name}"></p>
+    <p th:text="'Technic Status: '+${technic.technicStatus}" style="color: red"></p>
+    <div class="uk-card-media-top">
+      <img th:src="@{${technic.image.url}}" width="300" height="300" alt="">
+    </div>
+    <a th:href="@{'/technic/technics/'+${technic.id}}" class="button">Check it</a>
+  </div>
+</div>
+<p>Click <a th:href="@{/}">here</a> to home</p>
+</body>
+</html>

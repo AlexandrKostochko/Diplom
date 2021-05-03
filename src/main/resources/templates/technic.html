@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Technic</title>
+</head>
+<body>
+<div>
+    <p th:text="'Model: '+${technic.model}"></p>
+    <p th:text="'Manufacturer: '+${technic.manufacturer}"></p>
+    <p>Category: <a th:href="@{'/category/categories/'+${technic.category.id}}" th:text="${technic.category.name}"></a>
+    </p>
+    <p th:text="'Description: '+${technic.description}"></p>
+    <p th:text="'Price: '+${technic.price}"></p>
+    <p th:text="'Country manufacture: '+${technic.countryManufacture}"></p>
+    <a th:if="${marker} == 0">
+        <p th:text="'Quantity: '+${quantity}"></p>
+    </a>
+    <a th:if="${marker} == 1">
+        <p th:text="'Status: '+${technic.technicStatus}" style="color: red"></p>
+    </a>
+    <div class="uk-card-media-top">
+        <img th:src="@{${technic.image.url}}" width="300" height="300" alt="">
+    </div>
+    <form th:action="@{/technic/addToBasket}" method="post">
+        <input type="hidden" name="technicId" th:value="${technic.id}">
+        <button>Want it</button>
+    </form>
+</div>
+<p>Click <a th:href="@{'/category/categories/'+${technic.category.id}}">here</a> to technic models</p>
+<p>Click <a th:href="@{/}">here</a> to home</p>
+</body>
+</html>
