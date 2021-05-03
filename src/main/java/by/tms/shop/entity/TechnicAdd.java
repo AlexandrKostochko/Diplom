@@ -41,6 +41,7 @@ public class TechnicAdd {
     @NotBlank
     @NotNull
     @Pattern(regexp = "\\d+([.]\\d+)?")
+    @Size(max = 15)
     private String price;
 
     @NotBlank

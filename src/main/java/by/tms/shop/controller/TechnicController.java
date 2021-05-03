@@ -71,8 +71,14 @@ public class TechnicController {
                 technic.setPrice(technicAdd.getPrice());
                 technic.setTechnicStatus(TechnicStatus.ACTIVE);
                 MultipartFile multiImage = technicAdd.getImage();
-                Image image = imageService.upload(multiImage, "technic", technicAdd.getCategoryName(), technicAdd.getModel());
-                technic.setImage(image);
+                if(multiImage.isEmpty()) {
+                    Image image = new Image();
+                    image.setUrl("https://enix.ru/wp-content/uploads/2020/03/no-image-900x.jpg");
+                    technic.setImage(image);
+                } else {
+                    Image image = imageService.upload(multiImage, "technic", technicAdd.getCategoryName(), technicAdd.getModel());
+                    technic.setImage(image);
+                }
                 marker = 1;
                 technicService.addTechnic(technic);
                 log.info("technicController, addTechnicGet - success");
